@@ -17,7 +17,7 @@ template <class Base, class Derived>
 class clonable : public Base {
     private:
         clonable* clone_impl() const noexcept override {
-            return new Derived(*this);
+            return new Derived(*static_cast<const Derived*>(this));
         }
 
     public:
